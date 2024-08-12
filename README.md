@@ -30,10 +30,10 @@ git clone https://github.com/alimawla69/instagram-usernames-checker.git
 
 ## Problems, Bugs and Suggestions
 
-in case you saw any Problems, Bugs or having a Suggestions you can  tell me in the [issues](https://github.com/alimawla69/instagram-usernames-checker/issues/new) OR [Discord Server](https://discord.gg/fRXckx4r)
+in case you saw any Problems, Bugs or having a Suggestions you can  tell me in the [issues](https://github.com/alimawla69/instagram-usernames-checker/issues/new) OR [Discord Server](https://discord.gg/rr-dev)
 
-and i will fix and your suggetions and tell you in news channel in [Discord Server](https://discord.gg/fRXckx4r)
+and i will fix and your suggetions and tell you in news channel in [Discord Server](https://discord.gg/rr-dev)
 
 # Contact
-- [Discord Server](https://discord.gg/fRXckx4r)
+- [Discord Server](https://discord.gg/rr-dev)
 - [business.alimawla69@gmail.com](mailto:business.alimawla69@gmail.com)
