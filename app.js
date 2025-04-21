@@ -2,6 +2,7 @@ require('colors');
 const axios = require('axios'),
   fs = require('fs'),
   randomUseragent = require('random-useragent'),
+  cheerio = require('cheerio'),
   readline = require('readline'),
   generatedUsernames = new Set();
 
@@ -99,16 +100,23 @@ async function Check(username, num, proxy) {
       };
     }
     const response = await axios.get('https://www.instagram.com/' + username);
-    if (response.status == 200) {
+    const $ = cheerio.load(response.data);
+    const title = $('title').text();
+
+    if (title.includes(`@${username}`)) {
       console.log(`Thread ${num} - Username (${username}) Is Not Available`.red);
       fs.appendFileSync('taken.txt', username + '\n');
-    } else if (response.status == 404) {
+    } else if (title === "Instagram") {
       console.log(`Thread ${num} - Username (${username}) Is Available`.green);
       fs.appendFileSync('hits.txt', username + '\n');
+    } else if (title.includes("Login")) {
+      console.log(`Thread ${num} - Username (${username}) Is UNAvailable or Banded!`.green);
+      fs.appendFileSync('taken.txt', username + '\n');
     } else {
       console.log(`Thread ${num} - Username (${username}) Is UNAvailable or Banded!`.green);
       fs.appendFileSync('taken.txt', username + '\n');
     }
+
   } catch (error) {
     console.error(`Thread ${num} - Username ${username} - Error: ${error.message.includes('429') ? "The resource is being rate limited." : error}`);
   }
@@ -138,7 +146,7 @@ function getInput(question) {
   rl.close();
 
   const parsedUsernameLength = Math.max(4, Math.min(parseInt(usernameLength, 10) || 4
-  , 20));
+    , 20));
   const parsedNumThreads = parseInt(numThreads, 10) || 100;
 
   const timeout = 0;
